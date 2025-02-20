@@ -154,54 +154,69 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Projects Grid */}
-        <section className="px-4 pb-20">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects?.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative ${stickyNoteColors[index % stickyNoteColors.length]} rounded-lg p-4 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
-              >
-                <div className="relative aspect-[3/2] overflow-hidden rounded-md bg-gray-100 mb-3">
-                  {project.image_url && (
-                    <>
-                      <img
-                        src={project.image_url}
-                        alt={project.title}
-                        className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </>
-                  )}
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-base font-semibold line-clamp-1">{project.title}</h3>
-                  {project.tags && (
-                    <p className="text-xs text-gray-600">
-                      {project.tags}
-                    </p>
-                  )}
-                  <p className="text-sm text-gray-600 line-clamp-2">
-                    {project.description}
-                  </p>
+        {/* Projects Section */}
+        <section className="px-4 py-20">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-semibold mb-2">Projects</h2>
+            <p className="text-gray-600 mb-12">A collection of projects that showcase my skills and experience in development and design.</p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {projects?.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group relative"
+                >
+                  <div className="mb-4">
+                    <div className="text-xs text-gray-500 mb-1">{project.tags}</div>
+                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <p className="text-sm text-gray-600 mb-4">{project.description}</p>
+                    
+                    <div className="flex items-center space-x-6 text-sm">
+                      <div className="flex items-center space-x-1">
+                        <span className="font-mono text-gray-600">5+</span>
+                        <span className="text-gray-500">Contributors</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <span className="font-mono text-gray-600">10+</span>
+                        <span className="text-gray-500">Stars</span>
+                      </div>
+                    </div>
+                  </div>
+
                   {project.url && (
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                      className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors"
                     >
-                      View Project <ExternalLink className="w-4 h-4" />
+                      View Project <ExternalLink className="w-4 h-4 ml-1" />
                     </a>
                   )}
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
+
+        {/* Footer */}
+        <footer className="bg-white/50 backdrop-blur-sm border-t py-12">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="flex justify-between items-center">
+              <div className="text-sm text-gray-600">
+                Built with React & Supabase
+              </div>
+              <div className="flex space-x-6">
+                <a href="#" className="text-sm text-gray-600 hover:text-gray-900">GitHub</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-gray-900">Twitter</a>
+                <a href="#" className="text-sm text-gray-600 hover:text-gray-900">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
