@@ -1,8 +1,14 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Code2, Palette, Terminal, Lightbulb } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 const stickyNoteColors = [
   "bg-[#FEF7CD]", // Soft Yellow
@@ -37,6 +43,77 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white relative">
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-4">
+              {/* Development Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2">
+                    <Code2 className="w-4 h-4" />
+                    <span>Development</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-48">
+                  <DropdownMenuItem>Frontend</DropdownMenuItem>
+                  <DropdownMenuItem>Backend</DropdownMenuItem>
+                  <DropdownMenuItem>Full Stack</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Design Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2">
+                    <Palette className="w-4 h-4" />
+                    <span>Design</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-48">
+                  <DropdownMenuItem>UI Design</DropdownMenuItem>
+                  <DropdownMenuItem>UX Design</DropdownMenuItem>
+                  <DropdownMenuItem>Prototyping</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Tools Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2">
+                    <Terminal className="w-4 h-4" />
+                    <span>Tools</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-48">
+                  <DropdownMenuItem>VS Code</DropdownMenuItem>
+                  <DropdownMenuItem>Git</DropdownMenuItem>
+                  <DropdownMenuItem>Docker</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Resources Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2">
+                    <Lightbulb className="w-4 h-4" />
+                    <span>Resources</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-48">
+                  <DropdownMenuItem>Blog</DropdownMenuItem>
+                  <DropdownMenuItem>Tutorials</DropdownMenuItem>
+                  <DropdownMenuItem>Documentation</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            <Button>Contact Me</Button>
+          </div>
+        </div>
+      </nav>
+
       {/* Grid Background */}
       <div 
         className="absolute inset-0 bg-[linear-gradient(var(--grid-color)_1px,_transparent_1px),_linear-gradient(90deg,_var(--grid-color)_1px,_transparent_1px)] bg-[size:var(--grid-size)_var(--grid-size)]"
@@ -46,7 +123,7 @@ const Index = () => {
         } as React.CSSProperties}
       />
 
-      <div className="relative">
+      <div className="relative pt-16">
         {/* Hero Section */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
