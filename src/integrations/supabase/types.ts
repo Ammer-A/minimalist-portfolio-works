@@ -38,7 +38,6 @@ export type Database = {
       }
       portfolio_content: {
         Row: {
-          contributors: string | null
           description: string | null
           id: number
           image_url: string | null
@@ -46,7 +45,6 @@ export type Database = {
           title: string | null
         }
         Insert: {
-          contributors?: string | null
           description?: string | null
           id: number
           image_url?: string | null
@@ -54,7 +52,6 @@ export type Database = {
           title?: string | null
         }
         Update: {
-          contributors?: string | null
           description?: string | null
           id?: number
           image_url?: string | null
